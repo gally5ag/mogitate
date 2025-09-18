@@ -1,0 +1,243 @@
+:root {
+    --bg: #f7f7f8;
+    --panel: #fff;
+    --text: #222;
+    --muted: #666;
+    --brand: #f5b800;
+    --border: #e6e6e8;
+    --shadow: 0 2px 10px rgba(0, 0, 0, .06);
+    --radius: 5px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    color: var(--text);
+    background: var(--bg);
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 18px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand {
+    font-family: "Imperial Script", cursive;
+    font-size: 50px;
+    font-weight: 700;
+    color:#ffff66;
+    margin: 0;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0 14px;
+}
+
+.title-row h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.add-btn {
+    background: var(--brand);
+    color: #222;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 20px;
+}
+
+.sidebar {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+    height: max-content;
+    position: sticky;
+    top: 18px;
+}
+
+.sidebar .block {
+    margin-bottom: 18px;
+}
+
+.sidebar label {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 8px 2px;
+}
+
+.sidebar input[type="text"],
+.sidebar select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.search-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+.search-row input[type="text"] {
+    width: 100%;
+}
+
+.search-row .btn {
+    width: 100%;
+    /* ボタンを入力欄と同じ幅に */
+}
+
+.btn {
+    display: inline-block;
+    background: var(--brand);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.muted-link {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+@media (max-width: 960px) {
+    .layout {
+        grid-template-columns: 1fr
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+@media (max-width: 560px) {
+    .grid {
+        grid-template-columns: 1fr
+    }
+}
+
+.card {
+    list-style: none;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform .08s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px)
+}
+
+.thumb {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    background: #fafafa
+}
+
+.card-body {
+    padding: 12px 14px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.name {
+    font-weight: 600;
+}
+
+.price {
+    font-weight: 700;
+}
+
+.season {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.detail {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #1461ff;
+}
+
+.pager {
+    margin: 24px 0;
+    display: flex;
+    justify-content: center;
+}
+/* ページネーションのリンク調整 */
+.pager nav {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.pager nav .page-link {
+    font-size: 14px;
+    /* 文字サイズを少し小さく */
+    padding: 6px 10px;
+    /* パディングを縮める */
+    border-radius: 6px;
+    /* 角も控えめに */
+}
+
+/* 矢印アイコンのサイズ調整 */
+.pager nav svg {
+    width: 16px;
+    /* デフォルトは 24px ぐらいなので縮める */
+    height: 16px;
+}

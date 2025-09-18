@@ -1,0 +1,51 @@
+:root {
+    --bg: #f7f7f8;
+    --panel: #fff;
+    --text: #222;
+    --muted: #666;
+    --brand: #f5b800;
+    --border: #e6e6e8;
+    --shadow: 0 2px 10px rgba(0, 0, 0, .06);
+    --radius: 5px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    color: var(--text);
+    background: var(--bg);
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 18px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand {
+    font-family: "Imperial Script", cursive;
+    font-size: 50px;
+    font-weight: 700;
+    color: #ffff66;
+    margin: 0;
+}
