@@ -19,3 +19,13 @@ MySQL 8.0
 
 URL
 開発環境：htto://localhost/products
+git clone git@github.com:gally5ag/mogitate.git
+docker compose up -d
+env.ファイルを
+DB_DATABASE=laravel_db 
+DB_USERNAME=laravel_user 
+DB_PASSWORD=laravel_pass
+で作成ファイルと統一する
+php artisan config:clear
+php artisan cache:clear
+
