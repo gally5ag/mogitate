@@ -13,6 +13,7 @@ class ProductRequest extends FormRequest
 
     public function rules(): array
     {
+        $isCreate = $this->routeIs('products.store');
         return [
             // 商品名
             'name'        => ['required', 'string', 'max:100'],
@@ -28,12 +29,21 @@ class ProductRequest extends FormRequest
             'description' => ['required', 'string', 'max:120'],
 
             // 商品画像：登録時は必須、拡張子は .png / .jpeg のみ
-            'image'       => [
-                $this->isMethod('post') ? 'required' : 'nullable',
-                'image',
-                'mimes:png,jpeg',   // ← 要件に合わせて jpg を許可しない
-                'max:2048',
-            ],
+            'image'       => array_merge(
+                $isCreate ? ['required'] : ['nullable'],
+                [
+                    'image',
+                    'max:2048',
+                    // .png / .jpeg だけを厳密に許可（.jpg は不可）
+                    function (string $attribute, $value, \Closure $fail) {
+                        if (!$value) return;
+                        $ext = strtolower($value->getClientOriginalExtension());
+                        if (!in_array($ext, ['png', 'jpeg'], true)) {
+                            $fail('「.png」または「.jpeg」形式でアップロードしてください');
+                        }
+                    },
+                ]
+            ),
         ];
     }
 

@@ -20,6 +20,17 @@ class Product extends Model
     // 表示用ヘルパ
     public function getSeasonLabelAttribute(): ?string
     {
-        return [1 => '春', 2 => '夏', 3 => '秋', 4 => '冬'][$this->season] ?? null;
+        if (!$this->season) return null;
+
+        // '春,夏' / '春 夏' / 配列 いずれにも対応
+        $raw = is_array($this->season)
+            ? $this->season
+            : preg_split('/[,\s]+/u', trim((string) $this->season), -1, PREG_SPLIT_NO_EMPTY);
+
+        // 正規化＆不正値除去
+        $valid = ['春', '夏', '秋', '冬'];
+        $picked = array_values(array_intersect(array_unique($raw), $valid));
+
+        return $picked ? implode('・', $picked) : null; // 例: 春・夏
     }
 }

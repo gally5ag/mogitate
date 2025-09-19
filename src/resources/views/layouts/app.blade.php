@@ -26,5 +26,6 @@
         &copy; {{ date('Y') }} MyShop
     </footer>
 </body>
+@stack('scripts')
 
 </html>

@@ -57,7 +57,7 @@ class ProductController extends Controller
 
         Product::create($validated);
 
-        return redirect()->route('products.index')->with('success', '商品を登録しました');
+        return redirect('/products')->with('success', '商品を登録しました');
     }
 
     // 変更処理
